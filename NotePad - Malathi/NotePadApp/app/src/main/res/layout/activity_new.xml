@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rltoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:padding="@dimen/fab_margin">
+
+        <ImageView
+            android:id="@+id/ivDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_black_24dp" />
+
+        <ImageView
+            android:id="@+id/ivExport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="4dp"
+            android:src="@mipmap/if_doc_export" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_toLeftOf="@id/ivExport"
+            android:src="@drawable/ic_search_black_24dp" />
+
+
+        <ImageView
+            android:id="@+id/ivPaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_toLeftOf="@id/ivSearch"
+            android:src="@drawable/ic_content_paste_black_24dp" />
+
+
+        <ImageView
+            android:id="@+id/ivCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_toLeftOf="@id/ivPaste"
+            android:src="@drawable/ic_content_copy_black_24dp" />
+
+        <ImageView
+            android:id="@+id/ivFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_toLeftOf="@id/ivCopy"
+            android:src="@drawable/ic_format_line_spacing_black_24dp" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/ivRedo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="@dimen/fab_margin"-->
+            <!--android:layout_toLeftOf="@id/ivCopy"-->
+            <!--android:src="@drawable/ic_redo_black_24dp" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/ivUndo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="@dimen/fab_margin"-->
+            <!--android:layout_toLeftOf="@id/ivRedo"-->
+            <!--android:src="@drawable/ic_undo_black_24dp" />-->
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/searchHeader"
+        layout="@layout/layout_search_header"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_text_drawable"
+        android:gravity="top|left"
+        android:inputType="textMultiLine|text" />
+
+
+</LinearLayout>

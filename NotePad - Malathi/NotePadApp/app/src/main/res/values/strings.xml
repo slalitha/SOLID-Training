@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">NotePadApp</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="open">Open</string>
+    <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="success_save_message">Saved/Exported Successfully </string>
+    <string name="fail_save_message">Unable to save/export the file </string>
+    <string name="copy_success_message">Copy to ClipBoard</string>
+    <string name="paste_success_message">Pasted successfully</string>
+    <string name="no_paste_message">No Text is copied in Clipboard</string>
+
+    <string name="search">Search </string>
+    <string name="find">Find    </string>
+    <string name="replace">Replace</string>
+    <string name="replace_all">Replace All</string>
+
+    <string name="case_sensitive">Case sensitive</string>
+    <string name="title_activity_drive">DriveActivity</string>
+    
+    <string name="export_formats">Export To Formats : </string>
+    <string name="pdf">PDF</string>
+    <string name="doc">Doc</string>
+    <string name="xml">XML</string>
+    <string name="html">HTML</string>
+
+    <string name="format_text">Format Text</string>
+    <string name="leading_space">Leading Space</string>
+    <string name="trailing_space">Trailing Space</string>
+    <string name="leading_trailing_space">Leading and Trailing space</string>
+    <string name="split_lines">Split Line By Space</string>
+</resources>
