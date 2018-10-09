@@ -33,7 +33,7 @@ public interface MenuConstants
 	final String others = "Others";
 	final String store_to_cloud = "Store To Cloud";
 	
-	final String importAs = "Import";
+	final String export = "Export";
 	final String pdf = "As Pdf";
 	
 	

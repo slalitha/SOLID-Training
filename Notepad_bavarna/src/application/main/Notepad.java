@@ -302,7 +302,7 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 		JMenu otherMenu = createMenu(others,KeyEvent.KEY_LAST,mb);
 		createMenuItem(store_to_cloud,KeyEvent.KEY_TYPED,otherMenu,this);
 		
-		JMenu importMenu = createMenu(importAs,KeyEvent.KEY_LOCATION_NUMPAD,mb);
+		JMenu importMenu = createMenu(export,KeyEvent.KEY_LOCATION_NUMPAD,mb);
 		createMenuItem(pdf,KeyEvent.KEY_TYPED,importMenu,this);
 
 		MenuListener editMenuListener=new MenuListener() {
