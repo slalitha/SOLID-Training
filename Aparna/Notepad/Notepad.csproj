@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Notepad</RootNamespace>
+    <AssemblyName>Notepad</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASPNetSpell, Version=4.0.3.24577, Culture=neutral, PublicKeyToken=ed4c1e6166f7ca72, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spell.Check.4.0.3.2\lib\net40\ASPNetSpell.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.35.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.35.2\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.35.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.35.2\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.35.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.35.2\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Authentication.OAuth2, Version=1.2.4696.27633, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Authentication.OAuth2.1.2.4696.27634\lib\Google.Apis.Authentication.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Books.v1, Version=1.35.2.1331, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Books.v1.1.35.2.1331\lib\net45\Google.Apis.Books.v1.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.35.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.35.2\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v2, Version=1.35.2.1365, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v2.1.35.2.1365\lib\net45\Google.Apis.Drive.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.35.2.1365, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.35.2.1365\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2, Version=1.35.2.1330, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Oauth2.v2.1.35.2.1330\lib\net45\Google.Apis.Oauth2.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.35.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.35.2\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.3\lib\net40\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Drive.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\FileTypeEnum.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NotepadViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="ASPNetSpellInclude\core\default.ashx" />
+    <None Include="ASPNetSpellInclude\debugging-test-scripts\Test-Instalation.ashx" />
+    <None Include="ASPNetSpellInclude\dictionaries\English %28International%29.dic" />
+    <None Include="client_secret.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ASPNetSpellInclude\core\Default.aspx" />
+    <Content Include="ASPNetSpellInclude\core\dialog.js" />
+    <Content Include="ASPNetSpellInclude\debugging-test-scripts\Hello-World.aspx" />
+    <Resource Include="ASPNetSpellInclude\debugging-test-scripts\support.txt" />
+    <Content Include="ASPNetSpellInclude\debugging-test-scripts\Test-Server-Ajax.aspx" />
+    <Content Include="ASPNetSpellInclude\dialog.html" />
+    <Resource Include="ASPNetSpellInclude\dictionaries\custom.txt" />
+    <Resource Include="ASPNetSpellInclude\dictionaries\language-rules\banned-words.txt" />
+    <Resource Include="ASPNetSpellInclude\dictionaries\language-rules\common-mistakes.txt" />
+    <Resource Include="ASPNetSpellInclude\dictionaries\language-rules\enforced-corrections.txt" />
+    <Resource Include="ASPNetSpellInclude\dictionaries\README.txt" />
+    <Content Include="ASPNetSpellInclude\include.js" />
+    <Resource Include="ASPNetSpellInclude\license.txt" />
+    <Resource Include="ASPNetSpellInclude\support.txt" />
+    <Resource Include="ASPNetSpellInclude\themes\bright\ajax-loader.gif" />
+    <Content Include="ASPNetSpellInclude\themes\bright\context-menu.css" />
+    <Content Include="ASPNetSpellInclude\themes\bright\dialog-window.css" />
+    <Content Include="ASPNetSpellInclude\themes\bright\ieonly.css" />
+    <Resource Include="ASPNetSpellInclude\themes\buttons\spellicon.gif" />
+    <Resource Include="ASPNetSpellInclude\themes\buttons\spelliconover.gif" />
+    <Resource Include="ASPNetSpellInclude\themes\classic\ajax-loader.gif" />
+    <Content Include="ASPNetSpellInclude\themes\classic\context-menu.css" />
+    <Content Include="ASPNetSpellInclude\themes\classic\dialog-window.css" />
+    <Resource Include="ASPNetSpellInclude\themes\classic\gwiggle.png" />
+    <Content Include="ASPNetSpellInclude\themes\classic\ieonly.css" />
+    <Resource Include="ASPNetSpellInclude\themes\classic\wiggle.png" />
+    <Resource Include="ASPNetSpellInclude\themes\clean\ajax-loader.gif" />
+    <Content Include="ASPNetSpellInclude\themes\clean\context-menu.css" />
+    <Content Include="ASPNetSpellInclude\themes\clean\dialog-window.css" />
+    <Resource Include="ASPNetSpellInclude\themes\clean\gwiggle.png" />
+    <Content Include="ASPNetSpellInclude\themes\clean\ieonly.css" />
+    <Resource Include="ASPNetSpellInclude\themes\clean\wiggle.png" />
+    <Resource Include="ASPNetSpellInclude\themes\modern\ajax-loader.gif" />
+    <Content Include="ASPNetSpellInclude\themes\modern\context-menu.css" />
+    <Content Include="ASPNetSpellInclude\themes\modern\dialog-window.css" />
+    <Resource Include="ASPNetSpellInclude\themes\modern\gwiggle.png" />
+    <Content Include="ASPNetSpellInclude\themes\modern\ieonly.css" />
+    <Resource Include="ASPNetSpellInclude\themes\modern\wiggle.png" />
+    <Resource Include="ASPNetSpellInclude\themes\modern\xp.gif" />
+    <Content Include="ASPNetSpellInclude\translations\af.js" />
+    <Content Include="ASPNetSpellInclude\translations\ar.js" />
+    <Content Include="ASPNetSpellInclude\translations\be.js" />
+    <Content Include="ASPNetSpellInclude\translations\bg.js" />
+    <Content Include="ASPNetSpellInclude\translations\ca.js" />
+    <Content Include="ASPNetSpellInclude\translations\cn.js" />
+    <Content Include="ASPNetSpellInclude\translations\cs.js" />
+    <Content Include="ASPNetSpellInclude\translations\cy.js" />
+    <Content Include="ASPNetSpellInclude\translations\da.js" />
+    <Content Include="ASPNetSpellInclude\translations\de.js" />
+    <Content Include="ASPNetSpellInclude\translations\el.js" />
+    <Content Include="ASPNetSpellInclude\translations\en.js" />
+    <Content Include="ASPNetSpellInclude\translations\es.js" />
+    <Content Include="ASPNetSpellInclude\translations\et.js" />
+    <Content Include="ASPNetSpellInclude\translations\fa.js" />
+    <Content Include="ASPNetSpellInclude\translations\fi.js" />
+    <Content Include="ASPNetSpellInclude\translations\fr.js" />
+    <Content Include="ASPNetSpellInclude\translations\ga.js" />
+    <Content Include="ASPNetSpellInclude\translations\gl.js" />
+    <Content Include="ASPNetSpellInclude\translations\hi.js" />
+    <Content Include="ASPNetSpellInclude\translations\hr.js" />
+    <Content Include="ASPNetSpellInclude\translations\hu.js" />
+    <Content Include="ASPNetSpellInclude\translations\id.js" />
+    <Content Include="ASPNetSpellInclude\translations\is.js" />
+    <Content Include="ASPNetSpellInclude\translations\it.js" />
+    <Content Include="ASPNetSpellInclude\translations\iw.js" />
+    <Content Include="ASPNetSpellInclude\translations\ja.js" />
+    <Content Include="ASPNetSpellInclude\translations\ko.js" />
+    <Content Include="ASPNetSpellInclude\translations\lt.js" />
+    <Content Include="ASPNetSpellInclude\translations\lv.js" />
+    <Content Include="ASPNetSpellInclude\translations\mk.js" />
+    <Content Include="ASPNetSpellInclude\translations\ms.js" />
+    <Content Include="ASPNetSpellInclude\translations\mt.js" />
+    <Content Include="ASPNetSpellInclude\translations\nl.js" />
+    <Content Include="ASPNetSpellInclude\translations\no.js" />
+    <Content Include="ASPNetSpellInclude\translations\pl.js" />
+    <Content Include="ASPNetSpellInclude\translations\pt.js" />
+    <Content Include="ASPNetSpellInclude\translations\ro.js" />
+    <Content Include="ASPNetSpellInclude\translations\ru.js" />
+    <Content Include="ASPNetSpellInclude\translations\simple.js" />
+    <Content Include="ASPNetSpellInclude\translations\sk.js" />
+    <Content Include="ASPNetSpellInclude\translations\sl.js" />
+    <Content Include="ASPNetSpellInclude\translations\sq.js" />
+    <Content Include="ASPNetSpellInclude\translations\sr.js" />
+    <Content Include="ASPNetSpellInclude\translations\sw.js" />
+    <Content Include="ASPNetSpellInclude\translations\template.js" />
+    <Content Include="ASPNetSpellInclude\translations\th.js" />
+    <Content Include="ASPNetSpellInclude\translations\tl.js" />
+    <Content Include="ASPNetSpellInclude\translations\tr.js" />
+    <Content Include="ASPNetSpellInclude\translations\tw.js" />
+    <Content Include="ASPNetSpellInclude\translations\uk.js" />
+    <Content Include="ASPNetSpellInclude\translations\vi.js" />
+    <Content Include="ASPNetSpellInclude\translations\yi.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

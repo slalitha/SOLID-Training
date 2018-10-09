@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notepad", "Notepad\Notepad.csproj", "{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NotepadApp", "NotepadApp\NotepadApp.vdproj", "{C3BD9D70-8EEF-4764-99C5-2135DAA0273C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256ED914-27EE-4B7F-B71A-FB09FB2DDF2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3BD9D70-8EEF-4764-99C5-2135DAA0273C}.Debug|Any CPU.ActiveCfg = Debug
+		{C3BD9D70-8EEF-4764-99C5-2135DAA0273C}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		SolutionGuid = {A570E2D3-F6C0-4A98-91AE-358F999680AC}
+	EndGlobalSection
+EndGlobal

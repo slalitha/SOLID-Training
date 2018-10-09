@@ -1,0 +1,63 @@
+﻿<Window x:Name="NotepadWindow" x:Class="Notepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad.ViewModel"
+        mc:Ignorable="d"
+        Title="NotePad" Height="450" Width="800">
+    <Window.DataContext>
+        <local:NotepadViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <!--<Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="3,3,3,3"></Setter>
+        </Style>-->
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <cmd:EventToCommand Command="{Binding CloseCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+     
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding NewCommand}"/>
+                <MenuItem Header="_Open" Command="{Binding OpenCommand}"  />
+                <MenuItem Header="_Save" Command="{Binding SaveCommand}" />
+                <MenuItem Header="Save As" Command="{Binding SaveAsCommand}"/>
+                <!--<Separator />
+                <MenuItem Header="_Exit" Command="Close"/>-->
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Cut" Command="{Binding CutCommand}"/>
+                <MenuItem Header="Copy" Command="{Binding CopyCommand}"/>
+                <MenuItem Header="Paste" Command="{Binding PasteCommand}"/>
+            </MenuItem>
+            <MenuItem Header="Format">
+                <MenuItem Header="Trim" Command="{Binding TrimCommand}"/>
+                <MenuItem Header="Trim Start" Command="{Binding TrimStartCommand}"/>
+                <MenuItem Header="Trim End" Command="{Binding TrimEndCommand}"/>
+                <MenuItem Header="Split to lines" Command="{Binding SplitToLinesCommand}"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" Height="auto">
+            
+            <TextBox Grid.Row="1" Width="100" Text="{Binding SearchText}"></TextBox>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Search" Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
+            <TextBox Grid.Row="1" Width="100" Text="{Binding ReplaceText}"></TextBox>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Replace" Command="{Binding ReplaceCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Upload to Drive" Command="{Binding UploadToDriveCommand}" />
+        </ToolBar>
+        <TextBox x:Name="richTextBox" Grid.Row="1"  Height="400"  Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" ScrollViewer.VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <cmd:EventToCommand Command="{Binding SelectedTextCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+    </DockPanel>
+</Window>
