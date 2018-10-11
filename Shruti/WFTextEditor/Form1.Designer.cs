@@ -133,6 +133,7 @@
             this.cloudStorageToolStripMenuItem.Name = "cloudStorageToolStripMenuItem";
             this.cloudStorageToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.cloudStorageToolStripMenuItem.Text = "Cloud Storage";
+            this.cloudStorageToolStripMenuItem.Click += new System.EventHandler(this.cloudStorageToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 

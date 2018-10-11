@@ -76,12 +76,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseBillingWithOffer.cs" />
+    <Compile Include="BillGenerator.cs" />
+    <Compile Include="BillingAmt.cs" />
+    <Compile Include="BillingProvider.cs" />
+    <Compile Include="BillingWithDonation.cs" />
+    <Compile Include="BillingWithFeature.cs" />
+    <Compile Include="BillingWithSubscription.cs" />
+    <Compile Include="BillingWithTimeBased.cs" />
+    <Compile Include="Dialogs.cs" />
+    <Compile Include="DriveUpload.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseBilling.cs" />
+    <Compile Include="IBilling.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -96,6 +108,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="credential.json" />
     <None Include="credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

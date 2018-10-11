@@ -68,3 +68,5 @@
 /Shruti/WFTextEditor/obj/Debug/WFTextEditor.Form1.resources
 /Shruti/WFTextEditor/obj/Debug/WFTextEditor.pdb
 /Shruti/WFTextEditor/obj/Debug/WFTextEditor.Properties.Resources.resources
+**/obj
+**/bin
