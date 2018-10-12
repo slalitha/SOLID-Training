@@ -30,9 +30,12 @@ import javax.swing.event.MenuListener;
 
 import com.itextpdf.text.DocumentException;
 
-import application.constants.MenuConstants;
+import application.utils.BillingProviderFactory;
+import application.utils.BaseBilling;
+import application.utils.BillGenerator;
 import application.utils.FileOperation;
 import application.utils.FindDialog;
+import application.utils.IBilling;
 
 public class Notepad implements ActionListener, application.constants.MenuConstants {
 	
@@ -41,7 +44,6 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 	JLabel statusBar;
 
 	private String fileName="Untitled";
-	private boolean saved=true;
 	String applicationName="Javapad";
 
 	String searchString, replaceString;
@@ -56,6 +58,7 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 	long startTime = System.currentTimeMillis();
 	
 	long endTime;
+	BaseBilling billing = null;
 
 	Notepad() {
 		frame = new JFrame(fileName+" - "+applicationName);
@@ -73,6 +76,9 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		fileHandler=new FileOperation(this);
+		
+		billing = new BaseBilling();
+		
 		textArea.addCaretListener(
 		new CaretListener() {
 			public void caretUpdate(CaretEvent e)
@@ -137,9 +143,10 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 		else if(cmdText.equals(fileExit)) {
 			endTime = System.currentTimeMillis();
 			double timeTaken = TimeUnit.MILLISECONDS.toMinutes(endTime-startTime);
-			JOptionPane.showMessageDialog(frame,
-					"App Usage - " + timeTaken + " mins"
-					+ '\n'+ "Amount to be paid - " + ((timeTaken / 60 ) * 1) + " $","App Usage Statistics",1);
+//			JOptionPane.showMessageDialog(frame,
+//					"App Usage - " + timeTaken + " mins"
+//					+ '\n'+ "Amount to be paid - " + ((timeTaken / 60 ) * 1) + " $","App Usage Statistics",1);
+			BillGenerator.generateBill(frame, timeTaken);
 			if(fileHandler.confirmSave()) {
 				System.exit(0);
 			}
@@ -216,14 +223,7 @@ public class Notepad implements ActionListener, application.constants.MenuConsta
 			textArea.setText(text);
 		}
 		else if(cmdText.equals(pdf)) {
-			try {
-				fileHandler.createPdf();
-			} catch (DocumentException | IOException e) {
-				JOptionPane.showMessageDialog(getFrame(),
-						"Import failed" ,"Info",1);
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			fileHandler.createPdf();
 		}
 	}
 	

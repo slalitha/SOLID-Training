@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,7 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class FileOperation {
+public class FileOperation implements FileHandlerMethods{
 	
 	Notepad notepad;
 
@@ -250,14 +251,18 @@ public class FileOperation {
 		this.notepad.getFrame().setTitle(fileName+" - "+applicationTitle);
 	}
 	
-	public void createPdf()
-			throws DocumentException, IOException {
+	public void createPdf() {
 			
 		        Document document = new Document();
 		        String filename =  pdfId +".pdf";
 		        File file = new File(DEST);
 		        //file.getParentFile().mkdirs();
-		        PdfWriter.getInstance(document, new FileOutputStream(filename));
+		        try {
+					PdfWriter.getInstance(document, new FileOutputStream(filename));
+				} catch (FileNotFoundException | DocumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		        document.open();
 		        String fileContent = notepad.getTextArea().getText();
 		    	InputStream is = new ByteArrayInputStream(fileContent.getBytes());
@@ -268,12 +273,17 @@ public class FileOperation {
 		        Font normal = new Font(FontFamily.TIMES_ROMAN, 12);
 		        Font bold = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 		        boolean title = true;
-		        while ((line = br.readLine()) != null) {
-		            p = new Paragraph(line, title ? bold : normal);
-		            p.setAlignment(Element.ALIGN_JUSTIFIED);
-		            title = line.isEmpty();
-		            document.add(p);
-		        }
+		        try {
+					while ((line = br.readLine()) != null) {
+					    p = new Paragraph(line, title ? bold : normal);
+					    p.setAlignment(Element.ALIGN_JUSTIFIED);
+					    title = line.isEmpty();
+					    document.add(p);
+					}
+				} catch (IOException | DocumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		        document.close();
 		        JOptionPane.showMessageDialog(notepad.getFrame(),
 						"Import Successful" + "\n" + "location - " + filename ,"Info",1);
