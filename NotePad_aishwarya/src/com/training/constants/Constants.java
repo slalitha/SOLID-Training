@@ -12,4 +12,8 @@ public class Constants {
 	public static final int FIND_DIALOG_HEIGHT = 150;
 	public static final int REPLACE_DIALOG_WIDTH = 400;
 	public static final int REPLACE_DIALOG_HEIGHT = 120;
+	
+	public enum BillingOptions{
+		TIME, FEATURE, SUBSCRIPTION, DONATION
+	}
 }

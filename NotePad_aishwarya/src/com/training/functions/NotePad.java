@@ -7,28 +7,42 @@ import javax.swing.event.*;
 
 import com.training.constants.Constants;
 import com.training.dialogs.*;
+import com.training.filemenufunctions.BillGenerator;
+import com.training.filemenufunctions.Exit;
+import com.training.filemenufunctions.New;
+import com.training.filemenufunctions.Open;
+import com.training.filemenufunctions.Save;
 
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 import java.awt.datatransfer.*;
 
 public class NotePad extends JFrame {
 	private static final long serialVersionUID = 1L;
 
+	// static variable single_instance of type Singleton
+	private static NotePad notePad = null;
+
 	// The file chooser
-	private JFileChooser chooser;
+	public JFileChooser chooser;
 	// The text area
-	private JTextArea text;
-	private Font currFont;
+	public JTextArea text;
+	public Font currFont;
 	// The target filename
-	private String fileName;
+	public String fileName;
 	// The clipboard used to copy/paste operations
-	private Clipboard clipBoard;
+	public Clipboard clipBoard;
 	// Is there any modifications to the text area?
-	private boolean askToSave;
+	public boolean askToSave;
 	// File opened for the first time (not modified yet)?
-	private boolean openForTheFirstTime;
+	public boolean openForTheFirstTime;
 	// The current directory
-	private File currDir;
+	public File currDir;
+	// The replace dialog box
+	public ReplaceDialog repDialog;
+	// The dialog box to perform find operation
+	public FindDialog findDialog;
+
 	// Items of Menu Bar
 	private JMenu file, edit, tool, format;
 	private JMenu font, fontStyle, fontSize, trimSpaces;
@@ -40,17 +54,22 @@ public class NotePad extends JFrame {
 	private JMenuItem fontStyle1, fontStyle2, fontStyle3, fontStyle4;
 	private JMenuItem fontSize1, fontSize2, fontSize3, fontSize4;
 	private JMenuItem trimLeading, trimTrailing, trimBoth;
-	// The replace dialog box
-	private ReplaceDialog repDialog;
-	// The dialog box to perform find operation
-	private FindDialog findDialog;
+	public long startTime, endTime;
+
+	private Save saveFunc;
+	private Open openFunc;
+	private New newFunc;
+	private Exit exitFunc;
+	private BillGenerator bill;
 
 	/**
 	 * Creates a frame with text area and menu bar.
 	 */
-	public NotePad() {
+	private NotePad() {
+		startTime = System.currentTimeMillis();
 		setSize(Constants.WIDTH, Constants.HEIGHT);
 		setTitle(Constants.TITLE);
+
 		askToSave = false;
 
 		chooser = new JFileChooser();
@@ -72,6 +91,14 @@ public class NotePad extends JFrame {
 		currDir = new File(".");
 
 		setMenuBar();
+	}
+
+	// static method to create instance of Singleton class
+	public static NotePad getInstance() {
+		if (notePad == null) {
+			notePad = new NotePad();
+		}
+		return notePad;
 	}
 
 	/**
@@ -214,6 +241,7 @@ public class NotePad extends JFrame {
 	 * text area to detect changes in the document
 	 */
 	private void addAllListeners() {
+		setFunctionObjects();
 		addWinListener();
 		addFileMenuListener();
 		addEditMenuListener();
@@ -226,66 +254,49 @@ public class NotePad extends JFrame {
 		text.getDocument().addDocumentListener(listener);
 	}
 
+	private void setFunctionObjects() {
+		saveFunc = new Save();
+		openFunc = new Open();
+		newFunc = new New();
+		exitFunc = new Exit();
+		bill = new BillGenerator();
+	}
+
 	/**
 	 * Add the window listener
 	 */
 	private void addWinListener() {
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				saveBeforeExit();
+				exitFunc.exitFile();
+				double totalBill = bill.getTotalBill();
 			}
 		});
 	}
 
 	/**
-	 * Adds listener  to each item of File menu.
+	 * Adds listener to each item of File menu.
 	 */
 	private void addFileMenuListener() {
 		newMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				text.selectAll();
-				int begin = text.getSelectionStart();
-				int end = text.getSelectionEnd();
-				text.replaceRange("", begin, end);
-				setTitle(Constants.TITLE);
-				if (findDialog != null)
-					findDialog.initToZero();
+				newFunc.newFile();
 			}
 		});
 		open.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result = chooser.showOpenDialog(NotePad.this);
-				if (result == JFileChooser.APPROVE_OPTION) {
-					fileName = chooser.getSelectedFile().getPath();
-					setTitle(fileName);
-					text.selectAll();
-					int begin = text.getSelectionStart();
-					int end = text.getSelectionEnd();
-					text.replaceRange("", begin, end);
-					putTextIntoTextArea();
-					openForTheFirstTime = true;
-					askToSave = false;
-					if (findDialog != null)
-						findDialog.initToZero();
-					if (repDialog != null)
-						repDialog.initToZero();
-					text.setCaretPosition(0);
-				}
+				openFunc.openFile();
 			}
 		});
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result = chooser.showSaveDialog(NotePad.this);
-				if (result == JFileChooser.APPROVE_OPTION) {
-					fileName = chooser.getSelectedFile().getPath();
-					saveToFile(fileName);
-					askToSave = false;
-				}
+				saveFunc.saveCurrFile();
 			}
 		});
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				saveBeforeExit();
+				exitFunc.exitFile();
+				double totalBill = bill.getTotalBill();
 			}
 		});
 	}
@@ -560,19 +571,12 @@ public class NotePad extends JFrame {
 		} catch (IOException f) {
 		}
 	}
-	
+
 	/**
 	 * Uploads the current file to cloud storage
 	 */
 	private void saveToCloud(String filename) {
-		
-	}
-	
-	/**
-	 * Bill generation 
-	 */
-	private void billGeneration() {
-		
+
 	}
 
 	/**
