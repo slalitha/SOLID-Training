@@ -1,0 +1,19 @@
+package com.studentDatabase;
+
+import com.result.generateResult;
+import com.student.student;
+
+public class findstudent {
+
+	public student searchstudent(studentList students, String name)
+	{
+		for(int i = 0; i< students.size(); i++)
+		{
+			if(students.get(i).getName().equals(name))
+			{
+				return 
+				
+			}
+		}
+	}
+}

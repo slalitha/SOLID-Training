@@ -1,0 +1,9 @@
+package com.result;
+
+public class displayResult {
+
+	public void displayresult(String name)
+	{
+		
+	}
+}

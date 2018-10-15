@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.result.generateResult"/>
+    <fullyQualifiedTypeName name="com.subject.subject"/>
+    <fullyQualifiedTypeName name="com.studentDatabase.studentList"/>
+    <fullyQualifiedTypeName name="com.result.displayResult"/>
+    <fullyQualifiedTypeName name="com.student.student"/>
+</qualifiedTypeNameHistroy>

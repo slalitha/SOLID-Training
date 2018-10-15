@@ -1,0 +1,33 @@
+package com.application;
+
+import com.result.displayResult;
+import com.student.student;
+import com.studentDatabase.studentList;
+import com.subject.subject;
+
+public class application {
+
+	public static void main(String[] args0)
+	{
+		studentList studentlist = new studentList();
+		
+		student s1 = new student();
+		s1.setName("Vimal");
+		s1.addsubject(new subject("Chemistry",10,20,30));
+		s1.addsubject(new subject("Physics",10,20,30));
+		s1.addsubject(new subject("Mathematics",10,20,30));
+		s1.addsubject(new subject("Computer",10,20,30));
+		student s2 = new student();
+		s2.setName("Akash");
+		s2.addsubject(new subject("Chemistry",10,10,30));
+		s2.addsubject(new subject("Physics",10,10,30));
+		s2.addsubject(new subject("Mathematics",10,20,30));
+		s2.addsubject(new subject("Computer",10,20,30));
+		studentlist.addstudent(s2);
+		
+		
+		displayResult.displayresult(studentlist, "Vimal");
+	}
+	
+	
+}

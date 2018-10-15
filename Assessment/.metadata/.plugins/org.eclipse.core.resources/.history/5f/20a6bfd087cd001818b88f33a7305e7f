@@ -1,0 +1,22 @@
+package com.studentDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.result.generateResult;
+import com.student.student;
+
+public class studentList {
+	
+	private List<student> students =  new ArrayList<student>(); 
+	
+	public void addstudent(student s1)
+	{
+		students.add(s1);
+	}
+	public boolean getresult(student s1)
+	{
+		generateResult finalresult = new generateResult();
+		return finalresult.result(s1);
+	}
+}

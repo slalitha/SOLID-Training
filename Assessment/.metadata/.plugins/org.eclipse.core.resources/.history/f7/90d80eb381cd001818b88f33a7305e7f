@@ -1,0 +1,11 @@
+package com.student;
+
+import com.subject.subject;
+
+public class addSubjects {
+
+	public void addsubject(student student1, subject sub)
+	{
+		student1.subjects.add(sub);
+	}
+}

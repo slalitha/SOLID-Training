@@ -1,0 +1,30 @@
+package com.studentDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.result.generateResult;
+import com.student.student;
+
+public class studentList {
+	
+	private List<student> students =  new ArrayList<student>(); 
+	
+	public void addstudent(student s1)
+	{
+		students.add(s1);
+	}
+	public boolean getresult(String name)
+	{
+		for(int i = 0; i< students.size(); i++)
+		{
+			if(students.get(i).getName().equals(name))
+			{
+				generateResult finalresult = new generateResult();
+				return finalresult.result(students.get(i));
+				
+			}
+		}
+		return -1;
+	}
+}

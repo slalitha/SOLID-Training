@@ -1,0 +1,27 @@
+package com.student;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.subject.subject;
+
+public class student {
+	
+	private String name;
+	private List<subject> l1 = new ArrayList<subject>(); 
+	
+	public student()
+	{
+		this.name = "student";
+	}
+	public void setname(String name)
+	{
+		this.name = name;
+	}
+	public String getname()
+	{
+		return this.name;
+	}
+	
+}

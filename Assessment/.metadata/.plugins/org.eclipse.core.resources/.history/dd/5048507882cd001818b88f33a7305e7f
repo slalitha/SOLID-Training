@@ -1,0 +1,13 @@
+package com.result;
+
+import com.student.student;
+
+public class generateResult {
+
+	public boolean result(student s1)
+	{
+		List<subjects> s1.getsubjects();
+		return false;
+		
+	}
+}

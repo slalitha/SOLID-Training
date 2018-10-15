@@ -1,0 +1,9 @@
+package com.subject;
+
+public class subjectoperations {
+
+	public double getTotalmarks(subject s1)
+	{
+		return s1.getTotalMarks();
+	}
+}

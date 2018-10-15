@@ -1,0 +1,17 @@
+package com.studentDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.student.student;
+
+public class studentList {
+	
+	private List<student> students =  new ArrayList<student>(); 
+	
+	public void addstudent(student s1)
+	{
+		students.add(s1);
+	}
+
+}

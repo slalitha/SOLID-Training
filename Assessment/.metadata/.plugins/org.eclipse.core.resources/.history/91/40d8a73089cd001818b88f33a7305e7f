@@ -1,0 +1,15 @@
+package com.application;
+
+import com.student.student;
+import com.studentDatabase.studentList;
+import com.subject.subject;
+
+public class application {
+
+	studentList studentlist = new studentList();
+	
+	student s1 = new student();
+	s1.
+	subject sub1 = new subject("Chemistry",10,20,30);
+	
+}

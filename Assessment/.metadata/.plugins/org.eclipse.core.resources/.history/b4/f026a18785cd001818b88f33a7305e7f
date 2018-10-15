@@ -1,0 +1,14 @@
+package com.studentDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.student.student;
+import com.subject.subject;
+
+public class studentList {
+	
+	private List<student> students = new  new ArrayList<subject>(); 
+	
+
+}

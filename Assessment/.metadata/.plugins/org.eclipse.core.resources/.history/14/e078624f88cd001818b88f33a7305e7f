@@ -1,0 +1,12 @@
+package com.result;
+
+import com.student.student;
+import com.studentDatabase.studentList;
+
+public class application {
+
+	studentList studentlist = new studentList();
+	
+	student s1 = new student();
+	
+}

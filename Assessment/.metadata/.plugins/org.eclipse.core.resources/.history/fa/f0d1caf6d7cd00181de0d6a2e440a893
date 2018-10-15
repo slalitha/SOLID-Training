@@ -1,0 +1,13 @@
+package com.result;
+
+import com.studentDatabase.studentList;
+
+public class displayResult {
+
+	public static void displayresult(studentList studentlist, String name)
+	{
+		String result;
+	
+		System.out.print(name + " " + (studentlist.getresult("Akash")?"pass":"fail"));
+	}
+}

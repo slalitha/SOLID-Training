@@ -1,0 +1,14 @@
+package com.result;
+
+import com.student.student;
+
+public class generateResult {
+
+	public boolean result(student student)
+	{
+		
+		
+		return false;
+		
+	}
+}

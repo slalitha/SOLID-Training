@@ -1,0 +1,16 @@
+package com.student;
+
+public class student {
+	
+	private String name;
+	private int n;
+	
+	
+	public student(String name, int n)
+	{
+		this.name = name;
+		this.n = n;
+	}
+	
+
+}

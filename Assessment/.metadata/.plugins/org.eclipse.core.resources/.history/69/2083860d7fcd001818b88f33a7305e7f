@@ -1,0 +1,12 @@
+package com.subject;
+
+public class subject {
+
+	String name = "subject";
+	double Internal = 0.0;
+	double External = 0.0;
+	double Attendance = 0.0;
+	
+
+	
+}
