@@ -16,7 +16,6 @@ public class subject implements Isubject {
 		this.Attendance = attendance;
 		this.totalMarks = this.Internal + this.External + this.Attendance;
 	}
-	@Override
 	public double getTotalMarks() {
 		return totalMarks;
 	}
