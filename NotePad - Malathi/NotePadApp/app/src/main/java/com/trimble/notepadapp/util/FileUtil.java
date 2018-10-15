@@ -68,43 +68,4 @@ public class FileUtil {
         }
         return content.toString();
     }
-
-    public static boolean saveToFile(String path, String data) {
-        FileOutputStream fileOutputStream = null;
-        try {
-            File file = new File(path);
-            fileOutputStream = new FileOutputStream(file, false);
-            fileOutputStream.write((data + System.getProperty("line.separator")).getBytes());
-            return true;
-        } catch (FileNotFoundException ex) {
-            Log.d(TAG, ex.getMessage());
-        } catch (IOException ex) {
-            Log.d(TAG, ex.getMessage());
-        } finally {
-            try {
-                if (fileOutputStream != null)
-                    fileOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return false;
-    }
-
-    public static boolean convertToPdf(String text, String path) {
-        try {
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(path));
-            document.open();
-            document.add(new Paragraph(text));
-            document.close();
-            Log.d(TAG, "File is converted sucessfully");
-            return true;
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, e.getMessage());
-        } catch (DocumentException e) {
-            Log.e(TAG, e.getMessage());
-        }
-        return false;
-    }
 }

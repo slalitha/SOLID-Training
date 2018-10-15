@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.trimble.notepadapp.adapter.FileAdapter;
 import com.trimble.notepadapp.R;
+import com.trimble.notepadapp.util.Billing;
 import com.trimble.notepadapp.util.FileUtil;
 
 import java.io.File;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startTime = System.currentTimeMillis();
+        Billing.getInstance().startCalculate( System.currentTimeMillis());
         mFileListView = findViewById(R.id.rvlistFile);
 
 
@@ -149,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        long endtime = System.currentTimeMillis();
-        double hours = ((startTime - endtime) / 1000) / (60 * 60);
-        Toast.makeText(this, "Total cost $" + hours, Toast.LENGTH_LONG).show();
+        Billing.getInstance().endCalculate( System.currentTimeMillis());
+
+        Toast.makeText(this, "Total cost $" + Billing.getInstance().getAmmount(), Toast.LENGTH_LONG).show();
     }
 }

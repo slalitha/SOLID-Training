@@ -23,8 +23,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.trimble.notepadapp.R;
+import com.trimble.notepadapp.convertor.Converter;
 import com.trimble.notepadapp.dialog.SearchDialogFragment;
 import com.trimble.notepadapp.util.AlertUtil;
+import com.trimble.notepadapp.util.CustomClipBoardManager;
 import com.trimble.notepadapp.util.FileUtil;
 import com.trimble.notepadapp.util.StringUtil;
 
@@ -123,31 +125,15 @@ public class NewActivity extends Activity implements AlertUtil.IAlertCallbacks,
                 saveFile();
                 break;
             case R.id.ivCopy:
-                int startSelection = etContent.getSelectionStart();
-                int endSelection = etContent.getSelectionEnd();
-
-                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(etContent.getText().toString().substring(startSelection, endSelection),
-                        etContent.getText().toString().substring(startSelection, endSelection));
-                clipboardManager.setPrimaryClip(clip);
+                CustomClipBoardManager.copyToClipBoard(etContent, this);
                 Snackbar.make(etContent, getString(R.string.copy_success_message), Snackbar.LENGTH_LONG).show();
                 break;
 
             case R.id.ivPaste:
-                int startSelection1 = etContent.getSelectionStart();
-                int endSelection1 = etContent.getSelectionEnd();
-
-                ClipboardManager clipboardManager1 = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                if (!(clipboardManager1.hasPrimaryClip())) {
-                    Snackbar.make(etContent, getString(R.string.no_paste_message), Snackbar.LENGTH_LONG).show();
-                } else if (!(clipboardManager1.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))) {
+                boolean isSuccess = CustomClipBoardManager.pasteClipBoardContent(etContent, this);
+                if (isSuccess) {
                     Snackbar.make(etContent, getString(R.string.no_paste_message), Snackbar.LENGTH_LONG).show();
                 } else {
-                    ClipData.Item item = clipboardManager1.getPrimaryClip().getItemAt(0);
-                    String pasteData = item.getText().toString();
-                    String previousData = etContent.getText().toString().substring(0, startSelection1);
-                    String nextData = etContent.getText().toString().substring(endSelection1);
-                    etContent.setText(previousData + pasteData + nextData);
                     Snackbar.make(etContent, getString(R.string.paste_success_message), Snackbar.LENGTH_LONG).show();
                 }
                 break;
@@ -157,7 +143,6 @@ public class NewActivity extends Activity implements AlertUtil.IAlertCallbacks,
                 searchDialogFragment.show(fragmentManager, SearchDialogFragment.TAG);
                 break;
             case R.id.ivBack:
-
                 llSearch.setVisibility(View.GONE);
                 llToolBar.setVisibility(View.VISIBLE);
                 etContent.setText(etContent.getText().toString());
@@ -167,20 +152,7 @@ public class NewActivity extends Activity implements AlertUtil.IAlertCallbacks,
                 AlertUtil.CreateAlertDialogWithRadioButtonGroup(NewActivity.this, getString(R.string.format_text),
                         mFormatText, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int item) {
-                                switch (item) {
-                                    case 0:
-                                        etContent.setText(StringUtil.removeLeadingSpace(etContent.getText().toString()));
-                                        break;
-                                    case 1:
-                                        etContent.setText(StringUtil.removeTrailingSpace(etContent.getText().toString()));
-                                        break;
-                                    case 2:
-                                        etContent.setText(StringUtil.removeLeadingAndTrailingSpace(etContent.getText().toString()));
-                                        break;
-                                    case 3:
-                                        etContent.setText(StringUtil.splitByLine(etContent.getText().toString()));
-                                        break;
-                                }
+                                format(item);
                                 dialog.dismiss();
                             }
                         });
@@ -214,6 +186,23 @@ public class NewActivity extends Activity implements AlertUtil.IAlertCallbacks,
                 position++;
                 break;
             default:
+                break;
+        }
+    }
+
+    private void format(int item) {
+        switch (item) {
+            case 0:
+                etContent.setText(StringUtil.removeLeadingSpace(etContent.getText().toString()));
+                break;
+            case 1:
+                etContent.setText(StringUtil.removeTrailingSpace(etContent.getText().toString()));
+                break;
+            case 2:
+                etContent.setText(StringUtil.removeLeadingAndTrailingSpace(etContent.getText().toString()));
+                break;
+            case 3:
+                etContent.setText(StringUtil.splitByLine(etContent.getText().toString()));
                 break;
         }
     }
@@ -323,13 +312,7 @@ public class NewActivity extends Activity implements AlertUtil.IAlertCallbacks,
     }
 
     private void saveToInternalStorage(String fileName) {
-        boolean isSaved;
-        if (mCurrentFileFormat == FileType.PDF) {
-            isSaved = FileUtil.convertToPdf(etContent.getText().toString(), fileName);
-        } else {
-            isSaved = FileUtil.saveToFile(fileName,
-                    etContent.getText().toString());
-        }
+        boolean isSaved = Converter.getInstance(mCurrentFileFormat).convert(etContent.getText().toString(), fileName);
         if (isSaved) {
             Snackbar.make(etContent, getString(R.string.success_save_message), Snackbar.LENGTH_LONG).show();
             if (mCurrentFileFormat == FileType.TXT)
