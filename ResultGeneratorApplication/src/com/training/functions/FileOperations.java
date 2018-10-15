@@ -14,7 +14,6 @@ public class FileOperations {
 	private BufferedReader fileReader;
 	private BufferedWriter fileWriter;
 	private CheckInput check;
-	private StudentResultGenerator resultGenerator;
 
 	public FileOperations() {
 		File inputFile = new File("C:\\Users\\amallam\\Desktop\\Marks.txt");
@@ -25,10 +24,7 @@ public class FileOperations {
 			fileWriter = new BufferedWriter(new FileWriter(outputFile));
 
 			check = new CheckInput();
-			resultGenerator = new StudentResultGenerator();
-
-			readFile();
-			fileWriter.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -36,7 +32,7 @@ public class FileOperations {
 		}
 	}
 
-	private void readFile() {
+	public void readFile(StudentResultGenerator resultGenerator) {
 		String line;
 		try {
 			while ((line = fileReader.readLine()) != null) {
@@ -54,6 +50,7 @@ public class FileOperations {
 					writeInvalid();
 				}
 			}
+			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

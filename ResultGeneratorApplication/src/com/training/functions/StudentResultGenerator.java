@@ -6,6 +6,11 @@ import com.training.subject.DecideSubjectResult;
 import com.training.subject.Subject;
 
 public class StudentResultGenerator {
+	
+	public StudentResultGenerator() {
+		FileOperations fileOperations = new FileOperations();
+		fileOperations.readFile(this);
+	}
 
 	public Student generateStudentResult(String[] info) {
 		Student student = new Student(Integer.parseInt(info[0]), info[1]);
