@@ -16,5 +16,18 @@ namespace StudentManagementSystem
             subject.mark[1] = MarkFactory.GetMarkProvider(MarkTypeEnum.INTERNAL);
             subject.mark[2] = MarkFactory.GetMarkProvider(MarkTypeEnum.EXTERNAL);
         }
+        internal static void CalculateMarks(Student[] students)
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                for (int j = 0; j < students[i].subjects.Length; j++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        students[i].subjects[j].subjectScore += students[i].subjects[j].mark[k].CalculateMark();
+                    }
+                }
+            }
+        }
     }
 }

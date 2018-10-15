@@ -1,3 +1,4 @@
+using StudentManagementSystem.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace StudentManagementSystem
             int noOfStudents = Convert.ToInt32(Console.ReadLine());
             Student[] students = new Student[noOfStudents];
             StudentHelper.GetStudentDetails(students);
-            StudentHelper.CalculateMarks(students);
-            StudentHelper.CalculateResult(students);
-            StudentHelper.DisplayResult(students);
+            MarkHelper.CalculateMarks(students);
+            ResultGenerator.CalculateResult(students);
+            ResultGenerator.DisplayResult(students);
             Console.ReadKey();
         }
     }
