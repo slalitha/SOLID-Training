@@ -1,9 +1,13 @@
 package com.trimble.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.trimble.manager.StudentManager;
+import com.trimble.model.Mark;
 import com.trimble.model.Student;
+import com.trimble.report.StudentReport;
 
 public class Main {
 
@@ -25,21 +29,19 @@ public class Main {
 			System.out.println("Enter the number of subject");
 			int numberOfSubject = in.nextInt();
 
-			
-			int marks[] = new int[numberOfSubject];
-
+			List<Mark> marks = new ArrayList<>();
 			for (int j = 0; j < numberOfSubject; j++) {
 				System.out.println("Enter the external mark for subject " + (j + 1));
 				int mark = in.nextInt();
 				System.out.println("Enter the internal mark for subject " + (j + 1));
 				int internalmark = in.nextInt();
-				marks[j] = mark + internalmark +attanceMark;
+				marks.add(new Mark( mark , internalmark  ,attanceMark));
 			}
 
 			studentManager.addStudent(new Student(name, marks));
 		}
 
-		studentManager.getStudentReport();
+		StudentReport.getStudentReport();
 		in.close();
 
 	}
