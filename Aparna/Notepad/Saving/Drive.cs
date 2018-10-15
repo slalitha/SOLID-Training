@@ -1,19 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using DotNetOpenAuth.OAuth2;
 using Google.Apis.Auth.OAuth2;
-using Google.Apis.Auth.OAuth2.Web;
-using Google.Apis.Authentication.OAuth2;
-using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
-using Google.Apis.Books.v1;
-using Google.Apis.Drive.v2;
-using Google.Apis.Drive.v2.Data;
 using Google.Apis.Services;
-using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
 namespace Notepad

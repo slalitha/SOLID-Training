@@ -11,11 +11,6 @@
     <Window.DataContext>
         <local:NotepadViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <!--<Style TargetType="{x:Type Button}">
-            <Setter Property="Margin" Value="3,3,3,3"></Setter>
-        </Style>-->
-    </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
             <cmd:EventToCommand Command="{Binding CloseCommand}" PassEventArgsToCommand="True"/>
@@ -27,35 +22,33 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="{Binding NewCommand}"/>
                 <MenuItem Header="_Open" Command="{Binding OpenCommand}"  />
-                <MenuItem Header="_Save" Command="{Binding SaveCommand}" />
-                <MenuItem Header="Save As" Command="{Binding SaveAsCommand}"/>
-                <!--<Separator />
-                <MenuItem Header="_Exit" Command="Close"/>-->
+                <MenuItem Header="_Save" Command="{Binding SaveHelper.SaveCommand}" />
+                <MenuItem Header="Save As" Command="{Binding SaveHelper.SaveAsCommand}"/>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Cut" Command="{Binding CutCommand}"/>
-                <MenuItem Header="Copy" Command="{Binding CopyCommand}"/>
-                <MenuItem Header="Paste" Command="{Binding PasteCommand}"/>
+                <MenuItem Header="Cut" Command="{Binding EditHelper.CutCommand}"/>
+                <MenuItem Header="Copy" Command="{Binding EditHelper.CopyCommand}"/>
+                <MenuItem Header="Paste" Command="{Binding EditHelper.PasteCommand}"/>
             </MenuItem>
             <MenuItem Header="Format">
-                <MenuItem Header="Trim" Command="{Binding TrimCommand}"/>
-                <MenuItem Header="Trim Start" Command="{Binding TrimStartCommand}"/>
-                <MenuItem Header="Trim End" Command="{Binding TrimEndCommand}"/>
-                <MenuItem Header="Split to lines" Command="{Binding SplitToLinesCommand}"/>
+                <MenuItem Header="Trim" Command="{Binding FormatHelper.TrimCommand}"/>
+                <MenuItem Header="Trim Start" Command="{Binding FormatHelper.TrimStartCommand}"/>
+                <MenuItem Header="Trim End" Command="{Binding FormatHelper.TrimEndCommand}"/>
+                <MenuItem Header="Split to lines" Command="{Binding FormatHelper.SplitToLinesCommand}"/>
             </MenuItem>
         </Menu>
         <ToolBar DockPanel.Dock="Top" Height="auto">
-            
-            <TextBox Grid.Row="1" Width="100" Text="{Binding SearchText}"></TextBox>
-            <Button Grid.Row="1" Width="auto" Height="20" Content="Search" Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
-            <TextBox Grid.Row="1" Width="100" Text="{Binding ReplaceText}"></TextBox>
-            <Button Grid.Row="1" Width="auto" Height="20" Content="Replace" Command="{Binding ReplaceCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
-            <Button Grid.Row="1" Width="auto" Height="20" Content="Upload to Drive" Command="{Binding UploadToDriveCommand}" />
+
+            <TextBox Grid.Row="1" Width="100" Text="{Binding EditHelper.SearchText}"></TextBox>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Search" Command="{Binding EditHelper.SearchCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
+            <TextBox Grid.Row="1" Width="100" Text="{Binding EditHelper.ReplaceText}"></TextBox>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Replace" Command="{Binding EditHelper.ReplaceCommand}" CommandParameter="{Binding ElementName=richTextBox}"/>
+            <Button Grid.Row="1" Width="auto" Height="20" Content="Upload to Drive" Command="{Binding SaveHelper.UploadToDriveCommand}" />
         </ToolBar>
         <TextBox x:Name="richTextBox" Grid.Row="1"  Height="400"  Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" ScrollViewer.VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <cmd:EventToCommand Command="{Binding SelectedTextCommand}" PassEventArgsToCommand="True"/>
+                    <cmd:EventToCommand Command="{Binding EditHelper.SelectedTextCommand}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>

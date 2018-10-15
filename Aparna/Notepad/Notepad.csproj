@@ -170,12 +170,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Drive.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\FileTypeEnum.cs" />
+    <Compile Include="Billing\Billing.cs" />
+    <Compile Include="Billing\BillingFactory.cs" />
+    <Compile Include="Billing\BillingTypeEnum.cs" />
+    <Compile Include="Billing\BillingWithDonation.cs" />
+    <Compile Include="Billing\BaseBillingWithOffer.cs" />
+    <Compile Include="Billing\BillingWithSubscription.cs" />
+    <Compile Include="Billing\FeatureBasedBilling.cs" />
+    <Compile Include="Billing\TimeBasedBilling.cs" />
+    <Compile Include="Saving\Drive.cs" />
+    <Compile Include="Billing\IBilling.cs" />
+    <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="Helper\BillGenerator.cs" />
+    <Compile Include="Common\FileTypeConstant.cs" />
+    <Compile Include="Common\FileTypeEnum.cs" />
+    <Compile Include="Helper\EditHelper.cs" />
+    <Compile Include="Helper\FormatHelper.cs" />
+    <Compile Include="Saving\ISaver.cs" />
+    <Compile Include="Saving\SaveAsPDF.cs" />
+    <Compile Include="Saving\SaveAsXml.cs" />
+    <Compile Include="Saving\SaveFactory.cs" />
+    <Compile Include="Saving\SaveToCloud.cs" />
+    <Compile Include="Saving\SaveToGoogleDrive.cs" />
+    <Compile Include="Saving\SaveToSystem.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NotepadViewModel.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="Helper\OpenHelper.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Helper\SaveHelper.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
