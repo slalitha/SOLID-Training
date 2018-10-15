@@ -70,3 +70,14 @@
 /Shruti/WFTextEditor/obj/Debug/WFTextEditor.Properties.Resources.resources
 **/obj
 **/bin
+/Shruti/.vs/WFTextEditor/v15/.suo
+/Shruti/.vs/WFTextEditor/v15/Server/sqlite3/db.lock
+/Shruti/.vs/WFTextEditor/v15/Server/sqlite3/storage.ide
+/Shruti/.vs/WFTextEditor/v15/Server/sqlite3/storage.ide-shm
+/Shruti/.vs/WFTextEditor/v15/Server/sqlite3/storage.ide-wal
+/StudentMarks/.vs/StudentMarks/v15/.suo
+/StudentMarks/.vs/StudentMarks/v15/Server/sqlite3/db.lock
+/StudentMarks/.vs/StudentMarks/v15/Server/sqlite3/storage.ide
+/StudentMarks/.vs/StudentMarks/v15/Server/sqlite3/storage.ide-shm
+/StudentMarks/.vs/StudentMarks/v15/Server/sqlite3/storage.ide-wal
+/StudentMarks/StudentMarks/Properties/AssemblyInfo.cs
