@@ -1,4 +1,4 @@
-package application.utils;
+package application.utils.ResultGenerator;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import application.structure.Mark;
 import application.structure.StudentReport;
 import application.structure.Subject;
+import application.utils.Constants;
 
 public class ReportGenerator implements IReportGenerator{
 

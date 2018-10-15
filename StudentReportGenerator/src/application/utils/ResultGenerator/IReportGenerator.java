@@ -1,4 +1,4 @@
-package application.utils;
+package application.utils.ResultGenerator;
 
 import application.structure.StudentReport;
 

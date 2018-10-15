@@ -20,7 +20,7 @@ public class StudentReportGenerationEngine {
 		int exitStatus = 1;
 		do {
 			StudentReport studentReport = getInputAndInitializeReport();
-			IReportGenerator reportGenerator = ReportGeneratorProviderFactory.getReportGenerator(Constants.NORMAL);
+			application.utils.ResultGenerator.IReportGenerator reportGenerator = ReportGeneratorProviderFactory.getReportGenerator(Constants.NORMAL);
 			reportGenerator.calculateGrade(studentReport);
 			reportGenerator.displayResults(studentReport);
 			System.out.println(Constants.EXIT_MSG);
