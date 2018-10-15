@@ -5,25 +5,23 @@ import java.util.List;
 import com.trimble.manager.StudentManager;
 import com.trimble.model.Student;
 
-public class StudentReport implements IReportGenerator {
-
+public class StudentFailReport implements IReportGenerator {
+	
 	@Override
 	public void generateReport() {
 		StudentManager studentManager = StudentManager.newInstance();
 		List<Student> mStudentList = studentManager.getStudentList();
 		System.out.println("********************************************");
-		System.out.println("\t     Student Report");
+		System.out.println("\t     Fail Student Report");
 		System.out.println("********************************************");
-		System.out.println(" RollNo\t   Name\t\tPassStatus");
+		System.out.println(" RollNo\t   Name\n");
 		System.out.println("********************************************");
 		for (int i = 0; i < mStudentList.size(); i++) {
 			Student student = mStudentList.get(i);
-			System.out.print(" "+student.getmRollno()+"\t   "+student.getmName() + "\t\t");
-			if (StudentManager.newInstance().isSudentHasPass(student)) {
-				System.out.println("Pass");
-			} else {
-				System.out.println("Fail");
+			if (!studentManager.isSudentHasPass(student)) {
+				System.out.print(" "+student.getmRollno()+"\t   "+student.getmName());
 			}
 		}
 	}
+
 }

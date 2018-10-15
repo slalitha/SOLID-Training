@@ -2,7 +2,6 @@ package com.trimble.manager;
 
 import java.util.List;
 
-import com.trimble.model.Mark;
 import com.trimble.model.Student;
 
 import java.util.ArrayList;

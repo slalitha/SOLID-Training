@@ -22,7 +22,7 @@ public class Mark {
 		return mInternalMark + mExternalMark + mAttdanceMark;
 	}
 
-	public Mark(int internalMark, int externalMark, int attanceMark) {
+	public Mark(int externalMark, int internalMark, int attanceMark) {
 		this.mInternalMark = internalMark;
 		this.mExternalMark = externalMark;
 		this.mAttdanceMark = attanceMark;
